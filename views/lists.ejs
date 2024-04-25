@@ -1,0 +1,33 @@
+<%- include('partials/header.ejs') %>
+<div class="container">
+    <h1 class="display-1">Your Lists</h1>
+    <br>
+    <div class="lists">
+        <div class="row g-2">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post" action="/api/list/new">
+                        <input type="text" name="listName" class="form-control w-100" placeholder="List Name" required>
+                        <input type="submit" class="btn btn-primary btn-md w-100" value="Create List">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <% lists.forEach(list => { %>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body"
+                        <h3 class="card-title"><%= list.listName %></h3>
+                            <h4 class="card-subtitle"><%= list.hotels?.length %> hotels</h4>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/list/<%= list._id %>" class="btn btn-primary">View list</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+<%- include('partials/footer.ejs') %>

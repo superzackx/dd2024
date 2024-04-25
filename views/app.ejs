@@ -1,0 +1,37 @@
+<%- include('partials/header.ejs') %>
+<div class="container">
+    <br>
+    <br>  
+    <br>
+    <br>
+    <h1 class="display-2 text-center"><strong>Find the perfect hotel</strong></h1>
+    <br>
+    <div class="card custom-bg w-50 p-4 mx-auto">
+        <form method="get" action="/search">
+            <div class="row">
+                <div class="form-group col-md align-items-start flex-column">
+                    <label for="guests" class="d-inline-flex col-auto">Destination</label>
+                    <select class="form-select" id="destination" name="city"
+                        onchange="javascript: dynamicDropdown(this.options[this.selectedIndex].value);">
+                        <option value="Dubai">Dubai</option>
+                        <option value="Singapore">Singapore</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="form-group col-md align-items-start flex-column">
+                    <label for="destination" class="d-inline-flex">Hotel name</label>
+                    <input type="text" placeholder="Name" class="form-control" id="place" name="place"
+                        required>
+                </div>
+            <div class="row mx-auto">
+                <div>
+                    <br>
+                    <input type="submit" class="btn btn-primary w-100" value="Search hotels">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<%- include('partials/footer.ejs') %>

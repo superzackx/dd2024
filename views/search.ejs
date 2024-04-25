@@ -1,0 +1,30 @@
+<%- include("partials/header.ejs") %>
+<div class="container">
+            <h1 class="display-3 text-center"><strong>Results for hotels in <%= city %></strong></h1>
+            <div class="row g-2">
+            <% results.forEach(hotel => { %>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="<%= hotel.image %>" class="card-img-top" alt="..." style="height: 300px; object-fit: contain;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="  white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;"><%= hotel.name %></h4>
+                        </div>
+                        <div class="card-footer">
+                            <h5 class="card-subtitle">⭐️ <%= hotel.amenities[0] %></h5>
+                            <h5 class="card-subtitle"><strong>📈</strong> <%= hotel.rating %> out of 10</h5>
+                            <hr>
+                            <h5 class="card-subtitle" style="  white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;"><%= hotel.accessibility[1] %></h5>
+                            <hr>
+                            <a href="/hotel/<%= hotel._id %>" class="btn btn-sm btn-primary w-100 text-center">Learn more</a>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+            </div>
+</div>
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,68 @@
+<%- include("partials/header.ejs") %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <img src="<%= hotel.image %>" alt="hotel" class="img-fluid img-thumbnail w-100">
+        </div>
+        <div class="col-md-4">
+            <br>
+            <h3 class="display-4">Amenities:</h3>
+            <ul>
+                <% hotel.amenities?.forEach(item => { %>
+                    <li class="lead"><%= item %></li>
+                <% }) %>
+            </ul>
+            <br>
+            <h3 class="display-4">Accessibility:</h3>
+            <ul>
+                <% hotel.accessibility.forEach(item => { %>
+                    <li class="lead"><%= item %></li>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="display-5"><%= hotel.name %></h1>
+            <br>
+            <div class="row">
+                <div class="col-md-9">
+                    <h3 class="text-muted">📍 <%= hotel.city %></h3>
+                    <h3 class="text-muted">⭐️ <%= hotel.rating %> out of 10</h3>
+                </div>
+                <div class="col-md-3">
+                    <div style="text-align: end;">
+                        <div class="dropdown">
+                            <button class="btn btn-danger btn-lg w-100 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Save to list
+                            </button>
+                            <ul class="dropdown-menu">
+                                <% lists.forEach(list => { %>
+                                    <li><a class="dropdown-item" href="/api/list/update?id=<%= list._id %>&hotelId=<%= hotel._id %>"><%= list.listName %></a></li>
+                                <% }) %>
+                            </ul>
+                          </div>
+                    <a href="https://booking.com/" class="btn btn-primary btn-lg w-100">Book now</a>
+                </div>
+            </div>
+            </div>
+            <br>
+            <hr>
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="lead"><%= hotel.description %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <h3 class="display-5 text-center">Reviews:</h3>
+            <br>
+            <% hotel.reviews?.forEach(review => { %>
+                <h5><span style="font-size: 35px; font-weight: bold;">"</span><%= review %><span style="font-size: 35px; font-weight: bold;">"</span></h5>
+            <% }) %>
+        </div>
+    </div>
+    <br>
+</div>
+<%- include("partials/footer.ejs") %>
